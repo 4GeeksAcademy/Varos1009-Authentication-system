@@ -48,8 +48,13 @@ def create_user():
 def get_user():
     id_user = get_jwt_identity()
     user = User.query.get(id_user)
-    user = user.serialize()
-    return jsonify({'user':user})
+    if user:
+        user_data = user.serialize()  
+        return jsonify({'user': user_data})
+    else:
+        return jsonify({'error': 'User not found'}), 404
+    
+    
 
 
 @api.route('/token', methods=['POST','GET'])

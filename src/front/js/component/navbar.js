@@ -16,16 +16,22 @@ export const Navbar = () => {
 				</Link>
 				<div className="ml-auto ">
 					{
-						token ? <button className="btn btn-primary" onClick={handleLogout}>Logout</button>
-
-							: <div><Link to="/signup" className="p-2">
-								<button className="btn btn-primary">Signup</button>
-							</Link>
+						token ?
+							<div>
+								<Link to="/profile" className="p-2">
+									<button className="btn btn-primary">Profile</button>
+								</Link>
+								<button className="btn btn-primary" onClick={handleLogout}>Logout</button>
+							</div>
+							: <div>
+								<Link to="/signup" className="p-2">
+									<button className="btn btn-primary">Signup</button>
+								</Link>
 								<Link to="/login">
 									<button className="btn btn-primary">Login</button>
 								</Link>
 							</div>
-							}
+					}
 				</div>
 			</div>
 		</nav>

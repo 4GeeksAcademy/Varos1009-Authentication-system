@@ -57,7 +57,27 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log("Error loading message from backend", error)
 				}
 
+			},
+
+			getUser: async () => {
+				const token = localStorage.getItem('token');
+				try {
+					const resp = await fetch(process.env.BACKEND_URL + "/api/user", {
+						headers: {
+							'Content-Type': 'application/json',
+							'Authorization': 'Bearer ' + token
+						}
+					});
+
+					const data = await resp.json();
+					console.log(data)
+					await setStore({ user: data });
+				} catch (error) {
+					console.error('There has been a problem with your fetch operation:', error);
+				}
 			}
+
+
 		}
 	};
 };

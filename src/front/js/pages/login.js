@@ -10,7 +10,8 @@ export const Login = () => {
     const navigate = useNavigate()
     const handleLogin = () => {
         actions.login({ email: email, password: password });
-        navigate('/')
+        navigate('/profile')
+        
     }
 
     return (
